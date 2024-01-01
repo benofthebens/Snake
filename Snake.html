@@ -30,11 +30,13 @@
 <body>
        <div id="con"></div>
        <button onclick="gameLoop()">start game</button>
+	  
 </body>
 <script src="./Queue.js"></script>
+<script src="./Dikstra.js"></script>
 <script>
-       // Number of rows and items per row
-       const numRows = 9;
+      // Number of rows and items per row
+	 const numRows = 9;
        const itemsPerRow = 9;
        let IsGameOver = false;
 
@@ -147,7 +149,7 @@
                             }
                      }
               }
-              console.log(board);
+              
        }
        
        document.addEventListener("keydown", function (event) {
@@ -166,15 +168,16 @@
 
               }
        });
-       console.log((board[6][4] === 1))
+       
        function AddApple() {
               let appleX, appleY;
               do{
                      appleX = Math.floor(Math.random() * itemsPerRow) ;
                      appleY = Math.floor(Math.random() * numRows) ;
+				 console.log(appleX,appleY);
               } while((board[appleY][appleX] === 1))
               
-              console.log(appleX,appleY);
+              
              
 
               board[appleY][appleX] = 2; 
@@ -215,19 +218,21 @@
                             if (board[Snake[0].y][Snake[0].x] === 1) {
                                    // Snake collided with itself
                                    IsGameOver = true;
-                            } else if (board[Snake[0].y][Snake[0].x] === 2 || board[Snake[1].y][Snake[1].x] === 2) {
+                            } else if (board[Snake[0].y][Snake[0].x] === 2 || board[Snake[1].y][Snake[1].x] === 2  || board[Snake[2].y][Snake[2].x] === 2) {
                                    // Snake ate an apple
                                    // Handle scoring, snake growth, etc.
                                    // For now, let's just remove the apple and add a new one
+                                   AddApple(); // Add a new apple
                                    
-                                   await AddApple(); // Add a new apple
                                    const Increase = new SnakeItem(
                                           Snake[Snake.length - 1].x,
                                           Snake[Snake.length - 1].y
                                    
                                    );
+							
                                    Snake.push(Increase);
-                                   board[Increase.y][Increase.x] = 0; // Remove eaten apple     
+                                   board[Increase.y][Increase.x] = 0; // Remove eaten apple   
+							  
                             }
            
                      }
@@ -237,6 +242,7 @@
               }, 150);
        }
        
+	 
               
        
 
