@@ -1,13 +1,7 @@
-const graph = 
-[
-     [0,0,0],
-     [0,0,0],
-     [0,0,0]
-];
-const start = "0,0";
+
 let Cost = 0;
 
-function Dijkstra(){
+function Dijkstra(start, graph){
      let unvisited = {};
      let visited = {};
 
