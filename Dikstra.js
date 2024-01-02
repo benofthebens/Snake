@@ -1,7 +1,14 @@
-
+const graph = 
+[
+     [0,0,0],
+     [0,0,0],
+     [0,0,0]
+];
+const start = "0,0";
+const end = "2,2";
 let Cost = 0;
-
-function Dijkstra(start, graph){
+let Prev = 1;
+function Dijkstra(){
      let unvisited = {};
      let visited = {};
 
@@ -38,13 +45,45 @@ function Dijkstra(start, graph){
                }
                
                visited[current] = unvisited[current];
+               
                delete unvisited[current];
           }
           
           
      }
-     return visited;
+     let path = [end];
+     let currentNode = end;
+ 
+     while (visited[currentNode][1] !== null) {
+         path.unshift(visited[currentNode][1]);
+         
+         currentNode = visited[currentNode][1];
+     }
+     const direction = [];
+     for(let i = 0; i < path.length; i++){
+          if(i != 0){
+               let ref = path[i-1];
+               let [RefY, RefX] = ref.split(',').map(Number);
+               let [pathY, pathX] = path[i].split (',').map(Number);
+               if(RefX + 1 === pathX){
+                    direction.push("right");
+               }         
+               else if( RefX -1 === pathX){
+                    direction.push("left");
+               }
+               else if(RefY-1 === pathY){
+                    direction.push("down");
+               }
+               else if(RefY+1 === pathY){
+                    direction.push("up");
+               }
+          }
+          
+
+     }
      
+ 
+     return direction;
 
      
 }
@@ -74,4 +113,5 @@ function GetNeighbours(current){
 
      return neighbours;
 }
+
 console.log(Dijkstra());
