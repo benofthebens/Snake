@@ -1,19 +1,12 @@
-const graph = 
-[
-     [0,0,0],
-     [0,0,0],
-     [0,0,0]
-];
-const start = "0,0";
-const end = "2,2";
+
 let Cost = 0;
 let Prev = 1;
-function Dijkstra(){
+function Dijkstra(start,end,board){
      let unvisited = {};
      let visited = {};
 
-     for(let i = 0; i < graph.length; i++){
-          for(let j = 0; j < graph[0].length; j++){
+     for(let i = 0; i < board.length; i++){
+          for(let j = 0; j < board[0].length; j++){
                unvisited[`${i},${j}`] = [Infinity, null] ;
 
           }
@@ -29,7 +22,7 @@ function Dijkstra(){
                // Assuming unvisited is an object with numeric values
                let keys = Object.keys(unvisited);
                let current = keys.reduce((minKey, key) => unvisited[key] < unvisited[minKey] ? key : minKey, keys[0]);
-               let neighbours = GetNeighbours(current);
+               let neighbours = GetNeighbours(current,board);
                
                for(let i = 0; i < neighbours.length; i++){
                    
@@ -72,46 +65,42 @@ function Dijkstra(){
                     direction.push("left");
                }
                else if(RefY-1 === pathY){
-                    direction.push("down");
+                    direction.push("up");
                }
                else if(RefY+1 === pathY){
-                    direction.push("up");
+                    direction.push("down");
                }
           }
           
 
      }
-     
- 
-     return direction;
-
-     
+     return direction;    
 }
-function GetNeighbours(current){
+function GetNeighbours(current,board){
      
      const [currentRow, currentCol] = current.split(',').map(Number);
      const neighbours = [];
      // Check the left neighbor
-     if (currentCol > 0) {
+     if (currentCol > 0 && board[currentRow][currentCol - 1] !== 1) {
           neighbours.push(`${currentRow},${currentCol - 1}`);
      }
 
      // Check the right neighbor
-     if (currentCol < graph[0].length - 1) {
+     if (currentCol < board[0].length - 1 && board[currentRow][currentCol + 1] !== 1) {
           neighbours.push(`${currentRow},${currentCol + 1}`);
      }
 
      // Check the upper neighbor
-     if (currentRow > 0) {
+     if (currentRow > 0  && board[currentRow - 1][currentCol] !== 1) {
           neighbours.push(`${currentRow - 1},${currentCol}`);
      }
 
      // Check the lower neighbor
-     if (currentRow < graph.length - 1) {
+     if (currentRow < board.length - 1 && board[currentRow + 1][currentCol] !== 1) {
           neighbours.push(`${currentRow + 1},${currentCol}`);
      }
 
      return neighbours;
 }
 
-console.log(Dijkstra());
+
