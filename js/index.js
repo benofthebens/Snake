@@ -30,7 +30,34 @@ document.addEventListener("DOMContentLoaded", function () {
       game.setGrid(snake.body.getStackData()[i].x,snake.body.getStackData()[i].y,snake);
 
    }
+   let canMove = true; // Flag to control whether the snake can move
+
+   document.addEventListener("keydown", function (event) {
+      if (!canMove) return; // If canMove is false, ignore the keypress
+
+      canMove = false; // Set canMove to false to prevent subsequent keypresses
+      setTimeout(() => {
+         canMove = true; // After a delay, set canMove to true to allow the next keypress
+      }, 125); // Adjust the delay as needed (100 milliseconds in this example)
+
+      if (event.key === "d") {
+         snake.move(90);
+      }
+      else if (event.key === "a"){
+         snake.move(270);
+      }
+      else if(event.key === "w"){
+         snake.move(0);
+
+      }
+      else if(event.key === "s"){
+         snake. move(180);
+
+      }
+   });
    game.gameLoop(snake);
+
+
 
 
 
