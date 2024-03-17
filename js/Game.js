@@ -20,11 +20,7 @@ class Game {
     }
     gameLoop(snake){
         let interval = setInterval(() => {
-            if (Game.grid[snake.body.getStackData()[0].y][snake.body.getStackData()[0].x] === 1) {
-
-                return;
-            }
-
+            if (Game.grid[snake.body.getStackData()[0].y][snake.body.getStackData()[0].x] === 1) return;
 
             for(let i = 0; i < snake.body.getStackData().length;i ++){
 
