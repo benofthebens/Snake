@@ -16,22 +16,27 @@
               display: block;
               text-align: center;
               font-size: 35px;
+              border: black solid;
        }
        .row {
               display: flex;
               justify-content: center;
               flex-direction: row;
        }
-       .snake {
-              color:red;
-       }
+
        .row:nth-child(2n+1) .row-item:nth-child(2n){
 
-       }
-       .row:nth-child(2n) .row-item:nth-child(2n-1){
 
+       }
+       .row:nth-child(2n) .row-item:nth-child(2n+1){
 
         }
+       .snake {
+              background-color:red;
+       }
+       .apple {
+              background-color:green;
+       }
 
 
        
@@ -39,11 +44,13 @@
 <body>
        <div id="grid-container"></div>
 </body>
-<script src="./Dijkstra.js"></script>
+<script src="./js/Dijkstra.js"></script>
 <script src="./js/Snake.js"></script>
 <script src="./js/SnakeSegment.js"></script>
 <script src="./js/Stack.js"></script>
 <script src="./js/index.js"></script>
 <script src="./js/Game.js"></script>
-
+<script src="./js/Apple.js"></script>
+<script src="./js/AStar.js"></script>
+<script src="./js/Queue.js"></script>
 </html>
