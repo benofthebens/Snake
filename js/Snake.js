@@ -13,7 +13,7 @@ class Snake {
         const body = this.body.getStackData();
         if (this.previousPosition) {
             Game.grid[this.previousPosition.y][this.previousPosition.x] = 0;
-            document.getElementById(`${this.previousPosition.y},${this.previousPosition.x}`).innerText = 0;
+            //document.getElementById(`${this.previousPosition.y},${this.previousPosition.x}`).innerText = 0;
             document.getElementById(`${this.previousPosition.y},${this.previousPosition.x}`).className = "row-item";
         }
         this.previousPosition = new SnakeSegment(body[body.length-1].x,body[body.length-1].y);

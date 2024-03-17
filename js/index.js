@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
          const rowItem = document.createElement("div");
          rowItem.className = "row-item";
          rowItem.id = `${i},${j}`;
-         rowItem.innerText = Game.grid[i][j].toString();
+         //rowItem.innerText = Game.grid[i][j].toString();
 
          row.append(rowItem);
       }
@@ -26,9 +26,11 @@ document.addEventListener("DOMContentLoaded", function () {
    const game = new Game(150);
    for(let i = snake.body.getStackData().length - 1; i >= 0; i--){
 
-      game.setGrid(snake.body.getStackData()[i].x,snake.body.getStackData()[i].y);
+      game.setGrid(snake.body.getStackData()[i].x,snake.body.getStackData()[i].y,snake);
 
    }
+   const apple = new Apple(9);
+   apple.addApple();
    let canMove = true; // Flag to control whether the snake can move
 
    document.addEventListener("keydown", function (event) {
