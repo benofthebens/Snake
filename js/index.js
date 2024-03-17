@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function () {
 
    const gridContainer = document.getElementById("grid-container")
@@ -27,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
    const game = new Game(150);
    for(let i = snake.body.getStackData().length - 1; i >= 0; i--){
 
-      game.setGrid(snake.body.getStackData()[i].x,snake.body.getStackData()[i].y,snake);
+      game.setGrid(snake.body.getStackData()[i].x,snake.body.getStackData()[i].y);
 
    }
    let canMove = true; // Flag to control whether the snake can move
@@ -38,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
       canMove = false; // Set canMove to false to prevent subsequent keypresses
       setTimeout(() => {
          canMove = true; // After a delay, set canMove to true to allow the next keypress
-      }, 125); // Adjust the delay as needed (100 milliseconds in this example)
+      }, 150); // Adjust the delay as needed (100 milliseconds in this example)
 
       if (event.key === "d") {
          snake.move(90);
@@ -56,10 +55,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
    });
    game.gameLoop(snake);
-
-
-
-
 
 });
 
