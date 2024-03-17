@@ -27,15 +27,10 @@ document.addEventListener("DOMContentLoaded", function () {
    const game = new Game(150);
    for(let i = snake.body.getStackData().length - 1; i >= 0; i--){
 
-      game.setGrid(snake.body.getStackData()[i].x,snake.body.getStackData()[i].y);
+      game.setGrid(snake.body.getStackData()[i].x,snake.body.getStackData()[i].y,snake);
 
    }
-   console.log(Dijkstra("0,0","1,2",Game.grid))
-
-
-
-
-
+   game.gameLoop(snake);
 
 
 
