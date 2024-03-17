@@ -23,6 +23,7 @@ class Game {
 
             snake.move(90,this);
             for(let i = 0; i < snake.body.getStackData().length;i ++){
+
                 this.setGrid(snake.body.getStackData()[i].x,snake.body.getStackData()[i].y,snake);
             }
 
@@ -33,9 +34,11 @@ class Game {
         Game.grid[y][x] = 1;
 
         document.getElementById(`${y},${x}`).innerText = 1;
+        document.getElementById(`${y},${x}`).className = "snake row-item";
         if(snake.previousTail){
             Game.grid[snake.previousTail.y][snake.previousTail.x] = 0;
             document.getElementById(`${snake.previousTail.y},${snake.previousTail.x}`).innerText = 0;
+            document.getElementById(`${snake.previousTail.y},${snake.previousTail.x}`).className = "row-item";
         }
 
     }
