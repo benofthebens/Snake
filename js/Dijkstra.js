@@ -2,6 +2,35 @@
 let Cost = 0;
 let Prev = 1;
 function Dijkstra(start,end,board){
+     function GetNeighbours(current,board){
+
+          const [currentRow, currentCol] = current.split(',').map(Number);
+          const neighbours = [];
+          // Check the left neighbor
+          if (currentCol > 0 && board[currentRow][currentCol - 1] !== 1) {
+               neighbours.push(`${currentRow},${currentCol - 1}`);
+          }
+
+          // Check the right neighbor
+          if (currentCol < board[0].length - 1 && board[currentRow][currentCol + 1] !== 1) {
+               neighbours.push(`${currentRow},${currentCol + 1}`);
+          }
+
+          // Check the upper neighbor
+          if (currentRow > 0  && board[currentRow - 1][currentCol] !== 1) {
+               neighbours.push(`${currentRow - 1},${currentCol}`);
+          }
+
+          // Check the lower neighbor
+          if (currentRow < board.length - 1 && board[currentRow + 1][currentCol] !== 1) {
+               neighbours.push(`${currentRow + 1},${currentCol}`);
+          }
+
+          return neighbours;
+     }
+
+
+
      let unvisited = {};
      let visited = {};
 
@@ -76,31 +105,3 @@ function Dijkstra(start,end,board){
      }
      return direction;    
 }
-function GetNeighbours(current,board){
-     
-     const [currentRow, currentCol] = current.split(',').map(Number);
-     const neighbours = [];
-     // Check the left neighbor
-     if (currentCol > 0 && board[currentRow][currentCol - 1] !== 1) {
-          neighbours.push(`${currentRow},${currentCol - 1}`);
-     }
-
-     // Check the right neighbor
-     if (currentCol < board[0].length - 1 && board[currentRow][currentCol + 1] !== 1) {
-          neighbours.push(`${currentRow},${currentCol + 1}`);
-     }
-
-     // Check the upper neighbor
-     if (currentRow > 0  && board[currentRow - 1][currentCol] !== 1) {
-          neighbours.push(`${currentRow - 1},${currentCol}`);
-     }
-
-     // Check the lower neighbor
-     if (currentRow < board.length - 1 && board[currentRow + 1][currentCol] !== 1) {
-          neighbours.push(`${currentRow + 1},${currentCol}`);
-     }
-
-     return neighbours;
-}
-
-
