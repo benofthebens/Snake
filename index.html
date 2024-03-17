@@ -7,34 +7,41 @@
 </head>
 <style>
        body {
-              color: aliceblue;
+              color: black;
+
        }
-       .Row-Container {
+       .row-item {
+              width:60px;
+              height: 60px;
+              display: block;
+              text-align: center;
+              font-size: 35px;
+       }
+       .row {
               display: flex;
               justify-content: center;
               flex-direction: row;
+       }
+       .row:nth-child(2n+1) .row-item:nth-child(2n){
 
        }
-       .Apple {
-              background-color: green;
-       }
-       .Row-Item {
-              width:60px;
-              height: 60px;
-              
-              
-              display: block;
-       }
+       .row:nth-child(2n) .row-item:nth-child(2n-1){
+
+
+        }
+
+
        
 </style>
 <body>
-       <div id="con"></div>
-       <button onclick="AiGameLoop()">start game</button>
+       <div id="grid-container"></div>
 	  
 </body>
-<script src="./Queue.js"></script>
-<script src="./Dikstra.js"></script>
-<script src="./Main.js"></script>
-
+<script src="./Dijkstra.js"></script>
+<script src="./js/Snake.js"></script>
+<script src="./js/SnakeSegment.js"></script>
+<script src="./js/Stack.js"></script>
+<script src="./js/index.js"></script>
+<script src="./js/Game.js"></script>
 
 </html>
