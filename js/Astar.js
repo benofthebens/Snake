@@ -1,4 +1,4 @@
-#pTHG_SCORE = 0
+G_SCORE = 0
 F_SCORE = 1
 PREVIOUS = 2
 
